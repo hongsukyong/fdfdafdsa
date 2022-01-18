@@ -1,0 +1,83 @@
+<!doctype HTML>
+<html>
+<HEAD>
+  <title>석영 ♥ 요나</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+  <script src="colors.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  </script>
+
+</HEAD>
+
+<BODY>
+
+<h1><a href="http://localhost/web/snworld.html">홍석영♥나요나 닷컴</a></h1>
+<div id="grid">
+<OL id ="nav">
+
+
+</OL>
+
+  <div id="cssarticle">
+
+    <h2 style="margin-top: 0px;">요나요나요</h2>
+    <input  type="button" value="night" onclick="
+    nightdayhandler(this)"
+    >
+    <p>
+      HTML CSS JVS AJAX 완료! <br>
+    </p>
+    <p>
+      <img src="3.jpg" width="150" height="" ><img src="4.jpg" height="" width="150"><img src="5.jpg" width="150">
+    </p>
+
+
+  </div>
+  </div>
+
+<script>
+  function fetchpage (name){
+    fetch(name).then(function(response){
+      response.text().then(function(text){
+        document.querySelector('#cssarticle').innerHTML = text;
+      })
+    });
+  }
+  if(location.hash){
+    fetchpage(location.hash.substr(2));
+  } else {
+    fetchpage('welcome')
+  }
+  fetch('list').then(function(response){
+    response.text().then(function(text){
+      var items = text.split(',');
+      var i=0
+      var tags = '';
+      while(i<items.length){
+        var item = items[i];
+        item = item.trim();
+        var tag = '<li><a href ="#!'+item+'" onclick="fetchpage(\''+item+'\')">'+item+'</li>';
+        tags = tags + tag;
+        i= i + 1;
+      }
+      document.querySelector('#nav').innerHTML = tags;
+    })
+  });
+</script>
+
+<div id="disqus_thread"></div>
+<script>
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://hsy-1.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</body>
+</html>
